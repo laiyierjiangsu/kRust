@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28701.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rust_build", "rust_build\rust_build.vcxproj", "{B5A4A405-0D31-4E6B-A7C8-8083C6DFF6C5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpp_host", "cpp_host\cpp_host.vcxproj", "{4D2D7F3F-4A3D-49F8-BD4C-020A0B1B0A9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5A4A405-0D31-4E6B-A7C8-8083C6DFF6C5}.Debug|x64.ActiveCfg = Debug|x64
+		{B5A4A405-0D31-4E6B-A7C8-8083C6DFF6C5}.Debug|x64.Build.0 = Debug|x64
+		{4D2D7F3F-4A3D-49F8-BD4C-020A0B1B0A9F}.Debug|x64.ActiveCfg = Debug|x64
+		{4D2D7F3F-4A3D-49F8-BD4C-020A0B1B0A9F}.Debug|x64.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+		{4D2D7F3F-4A3D-49F8-BD4C-020A0B1B0A9F} = {B5A4A405-0D31-4E6B-A7C8-8083C6DFF6C5}
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+/.vs/
+/build/
+/rust_core/target/
+*.user
+*.VC.db
+*.VC.opendb
