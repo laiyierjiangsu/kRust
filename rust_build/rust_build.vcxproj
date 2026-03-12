@@ -34,6 +34,20 @@
     <IntDir>$(MSBuildProjectDirectory)\..\rust_core\target\x86_64-pc-windows-msvc\debug\rust_build\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\rust-toolchain.toml">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\rust_core\Cargo.toml">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\rust_core\Cargo.lock">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\rust_core\src\lib.rs">
+      <Filter>Rust Source</Filter>
+    </None>
+  </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
