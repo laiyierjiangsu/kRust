@@ -14,10 +14,12 @@ This repository contains a minimal Windows sample for calling Rust from C++ and 
 
 ## Repository Layout
 
-- `rust_core/`: Rust `cdylib` exporting pure integer functions through a C ABI
-- `rust_build/`: Visual Studio makefile wrapper project that runs Cargo
-- `cpp_host/`: Visual Studio C++ console host that links against the Rust import library
-- `kRust.sln`: Visual Studio solution containing both projects
+- `platform/windows/rust_core/`: current Windows-specific Rust `cdylib` sample
+- `platform/windows/rust_build/`: Visual Studio makefile wrapper project that runs Cargo for the Windows sample
+- `platform/windows/cpp_host/`: Visual Studio C++ console host for the Windows sample
+- `common/`: shared code for future platform samples
+- `common/include/rust_core.h`: shared C ABI header consumed by platform hosts
+- `platform/windows/kRust.sln`: Visual Studio solution for the Windows sample entrypoint
 
 ## Machine Setup
 
@@ -31,14 +33,15 @@ This repository contains a minimal Windows sample for calling Rust from C++ and 
 
 ## Build and Debug Flow
 
-1. Open `kRust.sln` in Visual Studio 2019 or 2022.
+1. Open `platform/windows/kRust.sln` in Visual Studio 2019 or 2022.
 2. Select `Debug | x64`.
 3. Build the solution.
-   - `rust_build` runs `cargo build`
-   - `cpp_host` links against `rust_core.dll.lib`
+   - `platform/windows/rust_build` runs `cargo build`
+   - `platform/windows/cpp_host` links against `rust_core.dll.lib`
    - post-build copies `rust_core.dll` and `rust_core.pdb` next to `cpp_host.exe`
+   - Visual Studio intermediate outputs live under `platform/windows/build/`
 4. Set `cpp_host` as the startup project.
-5. Place a breakpoint in `cpp_host/main.cpp` and in `rust_core/src/lib.rs`.
+5. Place a breakpoint in `platform/windows/cpp_host/main.cpp` and in `platform/windows/rust_core/src/lib.rs`.
 6. Start debugging with `F5` and step into `rust_add`.
 
 ## Constraints

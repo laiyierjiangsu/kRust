@@ -21,6 +21,7 @@
 - [x] 3.2 Add a C++ console host project
 - [x] 3.3 Add a Rust wrapper/build project to the solution
 - [x] 3.4 Define project dependencies so Rust builds before C++
+- [x] 3.5 Reorganize the Windows sample, including `kRust.sln`, under `platform/windows/` and keep shared assets under `common/`
 
 ## 4. Wire C++ to Rust
 
@@ -31,10 +32,10 @@
 
 ## 5. Validate debugging workflow
 
-- [ ] 5.1 Verify the C++ host starts under Visual Studio debugging
-- [ ] 5.2 Verify stepping from C++ into Rust source
-- [ ] 5.3 Verify Rust symbols are loaded predictably
-- [ ] 5.4 Verify the workflow on Visual Studio 2019 and Visual Studio 2022
+- [x] 5.1 Verify the C++ host starts under Visual Studio debugging
+- [x] 5.2 Verify stepping from C++ into Rust source
+- [x] 5.3 Verify Rust symbols are loaded predictably
+- [x] 5.4 Verify the workflow on Visual Studio 2019 and Visual Studio 2022
 
 ## 6. Document machine setup
 
@@ -42,3 +43,4 @@
 - [x] 6.2 Document the required Rust toolchain and target
 - [x] 6.3 Document the expected build and debug flow
 - [x] 6.4 Document known constraints and non-goals for the sample
+- [x] 6.5 Update repository layout documentation for the `platform/` and `common/` structure

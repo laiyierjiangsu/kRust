@@ -20,6 +20,7 @@ Create a sample project that:
 - includes both the C++ host and a Rust build project inside one Visual Studio solution
 - supports stepping from C++ into Rust during debugging
 - is constrained to a shared Windows baseline that works on both VS2019 and VS2022
+- organizes platform-specific sample code, including the Visual Studio solution entrypoint, under `platform/windows/` and shared assets under `common/`
 
 ## Scope
 
