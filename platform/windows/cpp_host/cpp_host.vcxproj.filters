@@ -16,7 +16,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\rust_core.h">
+    <ClInclude Include="..\..\..\common\include\rust_core.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

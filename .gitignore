@@ -1,6 +1,8 @@
 /.vs/
+**/.vs/
 /build/
-/rust_core/target/
+/platform/windows/build/
+/platform/windows/rust_core/target/
 *.user
 *.VC.db
 *.VC.opendb

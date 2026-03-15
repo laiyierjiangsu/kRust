@@ -12,20 +12,19 @@ This design keeps Rust aligned with standard ecosystem tooling while still makin
 ## Architecture
 
 ```text
-kRust.sln
-©À©¤ rust_build
-©¦  ©¸©¤ invokes cargo build for rust_core
-©¸©¤ cpp_host
-   ©¸©¤ links rust_core import library and starts debugging
+platform/windows/kRust.sln
+  -> platform/windows/rust_build
+     -> invokes cargo build for platform/windows/rust_core
+  -> platform/windows/cpp_host
+     -> links rust_core import library and starts debugging
 
-rust_core (Cargo crate)
+platform/windows/rust_core (Cargo crate)
   -> rust_core.dll
   -> rust_core.lib
   -> rust_core.pdb
 ```
 
 Runtime flow:
-
 ```text
 Visual Studio F5
   -> launches cpp_host.exe
@@ -40,20 +39,21 @@ Planned layout:
 
 ```text
 kRust/
-©À©¤ rust_core/
-©¦  ©À©¤ Cargo.toml
-©¦  ©¸©¤ src/lib.rs
-©À©¤ rust_build/
-©¦  ©¸©¤ rust_build.vcxproj
-©À©¤ cpp_host/
-©¦  ©À©¤ cpp_host.vcxproj
-©¦  ©À©¤ main.cpp
-©¦  ©¸©¤ include/rust_core.h
-©¸©¤ kRust.sln
+  -> common/
+  -> platform/
+     -> windows/
+        -> rust_core/
+           -> Cargo.toml
+           -> src/lib.rs
+        -> rust_build/
+           -> rust_build.vcxproj
+        -> cpp_host/
+           -> cpp_host.vcxproj
+           -> main.cpp
+  -> platform/windows/kRust.sln
 ```
 
 ## Rust Library Design
-
 Rust will be compiled as a `cdylib` targeting `x86_64-pc-windows-msvc`.
 
 The first version intentionally exposes only pure integer functions through a stable C ABI, for example:
@@ -98,7 +98,7 @@ The C++ host project is the startup project and depends on the Rust wrapper proj
 
 Responsibilities:
 
-- include the generated or hand-written C header
+- include the shared C header from `common/include/`
 - link against the Rust import library
 - ensure the Rust DLL is available at runtime
 - provide a simple call path that can be stepped through in the debugger
@@ -116,7 +116,7 @@ Build Solution
 Output handling should separate:
 
 - Rust native outputs in Cargo's standard target directory
-- C++ runnable outputs in the Visual Studio output directory
+- C++ runnable outputs in `platform/windows/build/` and Visual Studio intermediate directories under the same tree
 
 The design must include a deterministic handoff so that:
 

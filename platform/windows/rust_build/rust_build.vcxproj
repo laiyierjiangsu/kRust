@@ -30,8 +30,8 @@
     <NMakeReBuildCommandLine>cargo clean --manifest-path "$(MSBuildProjectDirectory)\..\rust_core\Cargo.toml" &amp;&amp; cargo build --manifest-path "$(MSBuildProjectDirectory)\..\rust_core\Cargo.toml" --target x86_64-pc-windows-msvc</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>cargo clean --manifest-path "$(MSBuildProjectDirectory)\..\rust_core\Cargo.toml"</NMakeCleanCommandLine>
     <NMakeOutput>$(MSBuildProjectDirectory)\..\rust_core\target\x86_64-pc-windows-msvc\debug\rust_core.dll</NMakeOutput>
-    <OutDir>$(MSBuildProjectDirectory)\..\rust_core\target\x86_64-pc-windows-msvc\debug\</OutDir>
-    <IntDir>$(MSBuildProjectDirectory)\..\rust_core\target\x86_64-pc-windows-msvc\debug\rust_build\</IntDir>
+    <OutDir>$(MSBuildProjectDirectory)\..\build\rust_build\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(MSBuildProjectDirectory)\..\build\obj\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemGroup>
@@ -49,6 +49,10 @@
     </None>
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+  <ItemGroup>
+    <None Include="..\rust_core\Cargo.toml" />
+    <None Include="..\rust_core\src\lib.rs" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>

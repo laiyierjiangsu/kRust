@@ -17,7 +17,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -29,8 +29,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)build\$(Configuration)\$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)build\obj\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
+    <OutDir>$(ProjectDir)..\build\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(ProjectDir)..\build\obj\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
     <TargetName>cpp_host</TargetName>
     <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
@@ -41,24 +41,24 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>rust_core.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)rust_core\target\x86_64-pc-windows-msvc\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\rust_core\target\x86_64-pc-windows-msvc\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>if exist "$(SolutionDir)rust_core\target\x86_64-pc-windows-msvc\debug\rust_core.dll" copy /Y "$(SolutionDir)rust_core\target\x86_64-pc-windows-msvc\debug\rust_core.dll" "$(OutDir)rust_core.dll"
-if exist "$(SolutionDir)rust_core\target\x86_64-pc-windows-msvc\debug\rust_core.pdb" copy /Y "$(SolutionDir)rust_core\target\x86_64-pc-windows-msvc\debug\rust_core.pdb" "$(OutDir)rust_core.pdb"</Command>
+      <Command>if exist "$(ProjectDir)..\rust_core\target\x86_64-pc-windows-msvc\debug\rust_core.dll" copy /Y "$(ProjectDir)..\rust_core\target\x86_64-pc-windows-msvc\debug\rust_core.dll" "$(OutDir)rust_core.dll"
+if exist "$(ProjectDir)..\rust_core\target\x86_64-pc-windows-msvc\debug\rust_core.pdb" copy /Y "$(ProjectDir)..\rust_core\target\x86_64-pc-windows-msvc\debug\rust_core.pdb" "$(OutDir)rust_core.pdb"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\rust_core.h" />
+    <ClInclude Include="..\..\..\common\include\rust_core.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\rust_build\rust_build.vcxproj">
