@@ -1,0 +1,9 @@
+[package]
+name = "ra_tick"
+version = "0.1.0"
+edition = "2021"
+description = "Periodic console output; use with LLDB attach debugging."
+
+[[bin]]
+name = "ra_tick"
+path = "src/main.rs"

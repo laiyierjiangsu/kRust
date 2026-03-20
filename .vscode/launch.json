@@ -1,4 +1,7 @@
 {
+  // ra_tick attach (direct): build + `cargo run -p ra_tick`, then attach by executable or PID.
+  // Subprocess: `cargo build -p ra_tick -p ra_tick_launcher` then `cargo run -p ra_tick_launcher`
+  // — attach to the **child** PID printed (still use "Attach to ra_tick (by executable)" on the child).
   "version": "0.2.0",
   "configurations": [
     {
@@ -70,6 +73,37 @@
       "args": [],
       "cwd": "${workspaceFolder}/ra-workspace-demo",
       "sourceLanguages": ["rust"]
+    },
+    {
+      "type": "lldb",
+      "request": "attach",
+      "name": "LLDB: Attach to ra_tick (by executable)",
+      "windows": {
+        "program": "${workspaceFolder}/ra-workspace-demo/target/debug/ra_tick.exe"
+      },
+      "linux": {
+        "program": "${workspaceFolder}/ra-workspace-demo/target/debug/ra_tick"
+      },
+      "osx": {
+        "program": "${workspaceFolder}/ra-workspace-demo/target/debug/ra_tick"
+      },
+      "cwd": "${workspaceFolder}/ra-workspace-demo",
+      "sourceLanguages": ["rust"]
+    },
+    {
+      "type": "lldb",
+      "request": "attach",
+      "name": "LLDB: Attach to ra_tick (by PID)",
+      "pid": "${input:raTickPid}",
+      "sourceLanguages": ["rust"]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "raTickPid",
+      "type": "promptString",
+      "description": "PID printed by ra_tick at startup (or from Task Manager)",
+      "default": ""
     }
   ]
 }

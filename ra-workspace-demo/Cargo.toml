@@ -1,3 +1,9 @@
 [workspace]
 resolver = "2"
-members = ["crates/ra_core", "crates/ra_api", "crates/ra_sandbox"]
+members = [
+    "crates/ra_core",
+    "crates/ra_api",
+    "crates/ra_sandbox",
+    "crates/ra_tick",
+    "crates/ra_tick_launcher",
+]

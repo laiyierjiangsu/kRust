@@ -1,0 +1,9 @@
+[package]
+name = "ra_tick_launcher"
+version = "0.1.0"
+edition = "2021"
+description = "Spawns ra_tick as a child process for attach / subprocess debugging demos."
+
+[[bin]]
+name = "ra_tick_launcher"
+path = "src/main.rs"
