@@ -1,0 +1,12 @@
+[package]
+name = "ra_sandbox"
+version = "0.1.0"
+edition = "2021"
+description = "Binary + integration tests for rust-analyzer workspace demo (crate C)."
+
+[features]
+default = []
+full = ["ra_api/full"]
+
+[dependencies]
+ra_api = { path = "../ra_api" }

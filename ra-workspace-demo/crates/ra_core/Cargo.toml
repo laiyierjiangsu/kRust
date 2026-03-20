@@ -1,0 +1,9 @@
+[package]
+name = "ra_core"
+version = "0.1.0"
+edition = "2021"
+description = "Core types for rust-analyzer workspace demo (library crate A)."
+
+[features]
+default = []
+extended = []

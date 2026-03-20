@@ -1,0 +1,75 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "LLDB: integration test (ra_sandbox)",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "-p",
+          "ra_sandbox",
+          "--test=integration"
+        ],
+        "cwd": "${workspaceFolder}/ra-workspace-demo",
+        "filter": {
+          "name": "integration",
+          "kind": "test"
+        }
+      },
+      "args": [
+        "cross_crate_public_api",
+        "--exact",
+        "--nocapture"
+      ],
+      "cwd": "${workspaceFolder}/ra-workspace-demo",
+      "sourceLanguages": ["rust"]
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "LLDB: integration test (full feature)",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "-p",
+          "ra_sandbox",
+          "--test=integration",
+          "--features",
+          "full"
+        ],
+        "cwd": "${workspaceFolder}/ra-workspace-demo",
+        "filter": {
+          "name": "integration",
+          "kind": "test"
+        }
+      },
+      "args": [
+        "full_feature_chain",
+        "--exact",
+        "--nocapture"
+      ],
+      "cwd": "${workspaceFolder}/ra-workspace-demo",
+      "sourceLanguages": ["rust"]
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "LLDB: ra_sandbox binary",
+      "cargo": {
+        "args": ["build", "-p", "ra_sandbox"],
+        "cwd": "${workspaceFolder}/ra-workspace-demo",
+        "filter": {
+          "name": "ra_sandbox",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}/ra-workspace-demo",
+      "sourceLanguages": ["rust"]
+    }
+  ]
+}

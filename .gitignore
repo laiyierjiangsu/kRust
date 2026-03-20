@@ -3,6 +3,7 @@
 /build/
 /platform/windows/build/
 /platform/windows/rust_core/target/
+/ra-workspace-demo/target/
 *.user
 *.VC.db
 *.VC.opendb

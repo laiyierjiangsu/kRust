@@ -1,0 +1,12 @@
+[package]
+name = "ra_api"
+version = "0.1.0"
+edition = "2021"
+description = "Public API layer over ra_core (library crate B)."
+
+[features]
+default = []
+full = ["ra_core/extended"]
+
+[dependencies]
+ra_core = { path = "../ra_core" }
